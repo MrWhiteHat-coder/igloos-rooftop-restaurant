@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --color-night: #141216;
+  --color-night-2: #1c1a22;
+  --color-night-3: #262332;
+  --color-slate-line: rgba(246, 240, 231, 0.14);
+  --color-gold: #cfa35a;
+  --color-gold-bright: #e2bc77;
+  --color-gold-deep: #a97f3f;
+  --color-cream: #f6f0e7;
+  --color-cream-soft: #e9e1d4;
+  --color-mist: #b8b0a4;
+
+  --font-display: "Cormorant Garamond", "Georgia", serif;
+  --font-body: "Jost", "Segoe UI", sans-serif;
+
+  --shadow-card: 0 20px 50px -20px rgba(0, 0, 0, 0.55);
+
+  --animate-fade-up: fade-up 0.7s ease-out both;
+  --animate-fade-in: fade-in 0.8s ease-out both;
+  --animate-none: none 0s both;
+
+  @keyframes fade-up {
+    0% {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-night);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-night);
+}
+
+/* Elegant focus treatment shared by interactive elements. */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(105deg, #e9cf9b 0%, var(--color-gold) 45%, #9a7434 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Decorative hairline divider with a gold centre diamond. */
+.hairline {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.hairline::before,
+.hairline::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(to right, transparent, var(--color-slate-line));
+}
+.hairline::after {
+  background: linear-gradient(to left, transparent, var(--color-slate-line));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

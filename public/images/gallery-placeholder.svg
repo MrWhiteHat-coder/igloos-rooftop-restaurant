@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#231e2c"/>
+      <stop offset="1" stop-color="#141216"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#g)"/>
+  <g fill="#f6f0e7" opacity=".75">
+    <circle cx="150" cy="140" r="2.4"/><circle cx="330" cy="90" r="1.7"/><circle cx="560" cy="160" r="2"/>
+    <circle cx="690" cy="110" r="1.6"/><circle cx="430" cy="220" r="1.4"/>
+  </g>
+  <g stroke="#cfa35a" stroke-width="2" fill="none" opacity=".85">
+    <path d="M80 320q80 70 160 12t160 12 160 12 160-12q80-52 160 26"/>
+    <circle cx="82" cy="322" r="7" fill="#e2bc77"/><circle cx="402" cy="338" r="7" fill="#e2bc77"/>
+    <circle cx="642" cy="322" r="7" fill="#e2bc77"/><circle cx="722" cy="330" r="7" fill="#e2bc77"/>
+  </g>
+  <path d="M120 900a280 280 0 0 1 560 0z" fill="#e2bc77" opacity=".12" stroke="#cfa35a" stroke-width="3.5"/>
+  <path d="M120 900h560M400 620v280M240 665c86 200 86 200 0 235M560 665c-86 200-86 200 0 235" stroke="#f6f0e7" stroke-opacity=".4" fill="none" stroke-width="3"/>
+  <circle cx="400" cy="780" r="60" fill="#0d0c10" stroke="#cfa35a" stroke-width="2.5" opacity=".9"/>
+  <rect x="24" y="24" width="752" height="952" fill="none" stroke="#cfa35a" stroke-opacity=".4" stroke-width="2"/>
+  <text x="400" y="952" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#b8b0a4" letter-spacing="6">GALLERY PHOTO</text>
+</svg>

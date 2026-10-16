@@ -1,0 +1,27 @@
+# Supabase CLI configuration (local dev + `supabase db push`).
+# Full reference: https://supabase.com/docs/guides/local-development/cli/config
+project_id = "igloos-rooftop-restaurant"
+
+[api]
+port = 54321
+
+[db]
+port = 54322
+major_version = 17
+
+[studio]
+port = 54323
+
+[auth]
+site_url = "http://localhost:5173"
+# Add your Netlify origins (preview + production) here:
+# redirect_uri = ["https://igloos.netlify.app/admin"]
+additional_redirect_urls = [
+  "http://localhost:5173/admin",
+  "http://localhost:5173/admin/login",
+]
+# Keep email sign-up open ONLY for staff provisioning; disable later if desired.
+enable_confirmations = false
+
+[storage]
+file_size_limit = "8MiB"
