@@ -22,12 +22,12 @@ export default function AdminDashboard() {
   const [tab, setTab] = useState<TabKey>("bookings");
 
   return (
-    <div className="min-h-screen bg-night">
-      <header className="border-b border-slate-line bg-night-2/70 px-5 py-5 sm:px-8">
+    <div className="min-h-screen bg-forest">
+      <header className="border-b border-ivory/15 bg-forest-2/70 px-5 py-5 sm:px-8">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4">
           <div>
-            <h1 className="font-display text-2xl text-gold">Igloos · Staff console</h1>
-            <p className="mt-1 text-xs text-cream/50">
+            <h1 className="font-display text-2xl text-brass">Igloos · Staff console</h1>
+            <p className="mt-1 text-xs text-ivory/50">
               Signed in as {profile?.email ?? "staff member"}
               {profile?.role === "admin" ? " · admin" : " · manager"}
             </p>
@@ -46,7 +46,7 @@ export default function AdminDashboard() {
               onClick={() => setTab(t.key)}
               aria-current={tab === t.key}
               className={`rounded-full px-5 py-2 text-xs uppercase tracking-[0.16em] transition-colors ${
-                tab === t.key ? "bg-gold/15 text-gold-bright" : "text-cream/60 hover:text-gold"
+                tab === t.key ? "bg-brass/15 text-brass-2" : "text-ivory/60 hover:text-brass"
               }`}
             >
               {t.label}

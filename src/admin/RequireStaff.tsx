@@ -9,7 +9,7 @@ function Guard({ children }: { children: ReactNode }) {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-night">
+      <div className="flex min-h-screen items-center justify-center bg-forest">
         <Spinner label="Checking access" />
       </div>
     );
@@ -19,10 +19,10 @@ function Guard({ children }: { children: ReactNode }) {
 
   if (!profile) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-night px-5 text-center">
-        <h1 className="font-display text-3xl text-gold">Not authorised</h1>
-        <p className="max-w-md text-sm text-cream/65">
-          You are signed in as <span className="text-cream">{session.user.email}</span>, but this
+      <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-forest px-5 text-center">
+        <h1 className="font-display text-3xl text-brass">Not authorised</h1>
+        <p className="max-w-md text-sm text-ivory/65">
+          You are signed in as <span className="text-ivory">{session.user.email}</span>, but this
           account is not on the list of active restaurant staff. Ask an administrator to add a
           staff profile for this account.
         </p>

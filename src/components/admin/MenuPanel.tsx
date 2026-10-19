@@ -115,7 +115,7 @@ export default function MenuPanel() {
 
       <section>
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <h2 className="font-display text-3xl text-cream">Menu items</h2>
+          <h2 className="font-display text-3xl text-ivory">Menu items</h2>
           <Button
             disabled={categories.length === 0}
             onClick={() =>
@@ -130,9 +130,9 @@ export default function MenuPanel() {
         {loading ? (
           <Spinner label="Loading menu" />
         ) : (
-          <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-line">
+          <div className="mt-6 overflow-x-auto border border-ivory/15">
             <table className="w-full min-w-[720px] text-left text-sm">
-              <thead className="bg-night-2/80 text-[0.7rem] uppercase tracking-[0.16em] text-cream/50">
+              <thead className="bg-forest-2/80 text-[0.7rem] uppercase tracking-[0.16em] text-ivory/50">
                 <tr>
                   <th className="px-4 py-3">Item</th>
                   <th className="px-4 py-3">Category</th>
@@ -142,19 +142,19 @@ export default function MenuPanel() {
                   <th className="px-4 py-3">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-line">
+              <tbody className="divide-y divide-ivory/15">
                 {items.map((i) => (
-                  <tr key={i.id} className="hover:bg-night-2/40">
-                    <td className="px-4 py-3 text-cream/85">{i.name}</td>
-                    <td className="px-4 py-3 text-cream/60">{catName(i.category_id)}</td>
-                    <td className="px-4 py-3 text-gold">
+                  <tr key={i.id} className="hover:bg-forest-2/40">
+                    <td className="px-4 py-3 text-ivory/85">{i.name}</td>
+                    <td className="px-4 py-3 text-ivory/60">{catName(i.category_id)}</td>
+                    <td className="px-4 py-3 text-brass">
                       {i.price_inr != null ? `₹${i.price_inr}` : "on request"}
                     </td>
                     <td className="px-4 py-3 text-xs">
                       {i.is_veg === true ? "veg" : i.is_veg === false ? "non-veg" : "—"} ·{" "}
                       {i.is_available ? "available" : "unavailable"}
                     </td>
-                    <td className="px-4 py-3 text-cream/50">{i.sort_order}</td>
+                    <td className="px-4 py-3 text-ivory/50">{i.sort_order}</td>
                     <td className="px-4 py-3">
                       <div className="flex gap-2">
                         <Button
@@ -190,7 +190,7 @@ export default function MenuPanel() {
 
       <section>
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <h2 className="font-display text-3xl text-cream">Categories</h2>
+          <h2 className="font-display text-3xl text-ivory">Categories</h2>
           <Button onClick={() => setCategoryEditing({ name: "", slug: "", sort_order: 0 })}>
             + New category
           </Button>
@@ -199,11 +199,11 @@ export default function MenuPanel() {
           {categories.map((c) => (
             <li
               key={c.id}
-              className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-slate-line bg-night-2/70 px-6 py-4"
+              className="flex flex-wrap items-center justify-between gap-4 border border-ivory/15 bg-forest-2/70 px-6 py-4"
             >
               <div>
-                <p className="text-cream/85">{c.name}</p>
-                <p className="text-xs text-cream/45">slug: {c.slug} · sort {c.sort_order}</p>
+                <p className="text-ivory/85">{c.name}</p>
+                <p className="text-xs text-ivory/45">slug: {c.slug} · sort {c.sort_order}</p>
               </div>
               <div className="flex gap-2">
                 <Button variant="outline" size="sm" onClick={() => setCategoryEditing(c)}>
@@ -264,7 +264,7 @@ export default function MenuPanel() {
               />
             </div>
             <div className="flex flex-wrap gap-8">
-              <label className="flex items-center gap-3 text-sm text-cream/75">
+              <label className="flex items-center gap-3 text-sm text-ivory/75">
                 <input
                   type="checkbox"
                   checked={editing.is_veg}
@@ -273,7 +273,7 @@ export default function MenuPanel() {
                 />
                 Vegetarian (untick for non-veg)
               </label>
-              <label className="flex items-center gap-3 text-sm text-cream/75">
+              <label className="flex items-center gap-3 text-sm text-ivory/75">
                 <input
                   type="checkbox"
                   checked={editing.is_available}
@@ -318,14 +318,14 @@ function SelectField({
   const id = `select-${label.replace(/\s+/g, "-").toLowerCase()}`;
   return (
     <div>
-      <label htmlFor={id} className="mb-2 block text-xs uppercase tracking-[0.18em] text-cream/70">
+      <label htmlFor={id} className="mb-2 block text-xs uppercase tracking-[0.18em] text-ivory/70">
         {label}
       </label>
       <select
         id={id}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full rounded-lg border border-cream/15 bg-night-2/70 px-4 py-3 text-cream focus:border-gold/70"
+        className="w-full rounded-lg border border-ivory/15 bg-forest-2/70 px-4 py-3 text-ivory focus:border-brass/70"
       >
         {options.map((o) => (
           <option key={o.value} value={o.value}>

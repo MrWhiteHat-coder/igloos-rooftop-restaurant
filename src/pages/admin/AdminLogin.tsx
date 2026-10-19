@@ -29,11 +29,11 @@ function LoginForm() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-night px-5">
-      <div className="w-full max-w-md rounded-3xl border border-slate-line bg-night-2/70 p-10">
+    <div className="flex min-h-screen items-center justify-center bg-forest px-5">
+      <div className="w-full max-w-md border border-ivory/15 bg-forest-2/70 p-10">
         <div className="text-center">
-          <h1 className="font-display text-3xl text-gold">Igloos · Staff</h1>
-          <p className="mt-3 text-sm text-cream/60">
+          <h1 className="font-display text-3xl text-brass">Igloos · Staff</h1>
+          <p className="mt-3 text-sm text-ivory/60">
             Reservations dashboard sign-in. Accounts are provisioned by a restaurant
             administrator.
           </p>
@@ -66,7 +66,7 @@ function LoginForm() {
           )}
         </form>
         {SITE.isPlaceholder && (
-          <p className="mt-8 text-center text-xs text-cream/40">
+          <p className="mt-8 text-center text-xs text-ivory/40">
             Staff accounts are created in Supabase Auth and linked in the staff_profiles table —
             see docs/SETUP.md.
           </p>

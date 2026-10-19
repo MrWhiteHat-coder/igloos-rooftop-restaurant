@@ -7,9 +7,9 @@ import type {
 } from "react";
 
 const controlBase =
-  "w-full rounded-lg border bg-night-2/70 px-4 py-3 text-cream placeholder:text-cream/30 transition-colors duration-200 focus:border-gold/70 focus:bg-night-2 disabled:opacity-50";
-const okBorder = "border-cream/15";
-const errorBorder = "border-red-400/70";
+  "w-full border-b border-ivory/25 bg-transparent px-1 py-3.5 text-ivory placeholder:text-ivory/30 transition-colors duration-300 focus:border-brass focus:outline-none rounded-none";
+const okBorder = "";
+const errorBorder = "border-red-300/70";
 
 export function Label({
   htmlFor,
@@ -21,9 +21,9 @@ export function Label({
   hint?: string;
 }) {
   return (
-    <label htmlFor={htmlFor} className="mb-2 block text-xs uppercase tracking-[0.18em] text-cream/70">
+    <label htmlFor={htmlFor} className="mb-1 block text-[0.62rem] font-medium uppercase tracking-[0.26em] text-ivory/55">
       {children}
-      {hint && <span className="ml-2 normal-case tracking-normal text-cream/40">({hint})</span>}
+      {hint && <span className="ml-2 normal-case tracking-normal text-ivory/35">({hint})</span>}
     </label>
   );
 }
@@ -31,7 +31,7 @@ export function Label({
 function FieldError({ id, children }: { id: string; children?: ReactNode }) {
   if (!children) return null;
   return (
-    <p id={id} role="alert" className="mt-2 text-sm text-red-300">
+    <p id={id} role="alert" className="mt-2 text-[0.8rem] font-light text-red-200">
       {children}
     </p>
   );
@@ -89,7 +89,12 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           id={id}
           aria-invalid={Boolean(error) || undefined}
           aria-describedby={error ? errorId : undefined}
-          className={`${controlBase} ${error ? errorBorder : okBorder} appearance-none ${className}`}
+          className={`${controlBase} ${error ? errorBorder : okBorder} appearance-none bg-[length:10px] bg-no-repeat ${className}`}
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23B79A69' stroke-width='1.5'/%3E%3C/svg%3E\")",
+            backgroundPosition: "right 4px center",
+          }}
           {...rest}
         >
           {placeholderOption && <option value="">{placeholderOption}</option>}
@@ -123,7 +128,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           id={id}
           aria-invalid={Boolean(error) || undefined}
           aria-describedby={error ? errorId : undefined}
-          className={`${controlBase} ${error ? errorBorder : okBorder} min-h-28 ${className}`}
+          className={`${controlBase} ${error ? errorBorder : okBorder} min-h-28 resize-y ${className}`}
           {...rest}
         />
         <FieldError id={errorId}>{error}</FieldError>

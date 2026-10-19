@@ -75,17 +75,17 @@ export default function SettingsPanel() {
 
   return (
     <div className="max-w-3xl space-y-10">
-      <section className="rounded-3xl border border-slate-line bg-night-2/70 p-8">
-        <h2 className="font-display text-3xl text-cream">Hero image</h2>
-        <p className="mt-2 text-sm text-cream/60">
+      <section className="border border-ivory/15 bg-forest-2/70 p-8">
+        <h2 className="font-display text-3xl text-ivory">Hero image</h2>
+        <p className="mt-2 text-sm text-ivory/60">
           Appears on the public gallery lookup and can be wired into the home hero. Upload a wide,
           high-resolution photograph (12 MB max).
         </p>
         {heroUrl && (
-          <img src={heroUrl} alt="Current hero" className="mt-6 h-56 w-full rounded-2xl object-cover" />
+          <img src={heroUrl} alt="Current hero" className="mt-6 h-56 w-full object-cover" />
         )}
         <div className="mt-6">
-          <label className="inline-flex cursor-pointer items-center gap-3 rounded-full border border-gold/60 px-6 py-2.5 text-xs uppercase tracking-[0.14em] text-gold transition-colors hover:bg-gold/10">
+          <label className="inline-flex cursor-pointer items-center gap-3 rounded-full border border-brass/60 px-6 py-2.5 text-xs uppercase tracking-[0.14em] text-brass transition-colors hover:bg-brass/10">
             {uploadingHero ? "Uploading…" : "Choose new hero image"}
             <input
               type="file"
@@ -101,9 +101,9 @@ export default function SettingsPanel() {
         </div>
       </section>
 
-      <section className="rounded-3xl border border-slate-line bg-night-2/70 p-8">
-        <h2 className="font-display text-3xl text-cream">Operational notes</h2>
-        <p className="mt-2 text-sm text-cream/60">
+      <section className="border border-ivory/15 bg-forest-2/70 p-8">
+        <h2 className="font-display text-3xl text-ivory">Operational notes</h2>
+        <p className="mt-2 text-sm text-ivory/60">
           Internal notes for the team. Not shown publicly.
         </p>
         <div className="mt-6">

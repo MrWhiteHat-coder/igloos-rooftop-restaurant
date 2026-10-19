@@ -64,8 +64,8 @@ export default function GalleryPanel() {
     <div>
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h2 className="font-display text-3xl text-cream">Gallery</h2>
-          <p className="mt-1 text-sm text-cream/55">
+          <h2 className="font-display text-3xl text-ivory">Gallery</h2>
+          <p className="mt-1 text-sm text-ivory/55">
             Unpublished images stay hidden from the public gallery page.
           </p>
         </div>
@@ -81,13 +81,13 @@ export default function GalleryPanel() {
       {loading ? (
         <Spinner label="Loading gallery" />
       ) : images.length === 0 ? (
-        <p className="mt-10 rounded-2xl border border-slate-line bg-night-2/60 p-10 text-center text-sm text-cream/60">
+        <p className="mt-10 border border-ivory/15 bg-forest-2/60 p-10 text-center text-sm text-ivory/60">
           No images yet. Upload the first restaurant photograph.
         </p>
       ) : (
         <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {images.map((img) => (
-            <li key={img.id} className="overflow-hidden rounded-2xl border border-slate-line bg-night-2/60">
+            <li key={img.id} className="overflow-hidden border border-ivory/15 bg-forest-2/60">
               <img
                 src={img.public_url ?? `/images/gallery-placeholder.svg#${encodeURIComponent(img.storage_path)}`}
                 alt={img.alt_text ?? img.title ?? "Gallery image"}
@@ -95,9 +95,9 @@ export default function GalleryPanel() {
                 className="h-44 w-full object-cover"
               />
               <div className="p-5">
-                <p className="text-sm text-cream/85">{img.title ?? "Untitled"}</p>
-                <p className="mt-1 font-mono text-[0.65rem] text-cream/40">{img.storage_path}</p>
-                <p className="mt-3 text-xs text-cream/50">
+                <p className="text-sm text-ivory/85">{img.title ?? "Untitled"}</p>
+                <p className="mt-1 font-mono text-[0.65rem] text-ivory/40">{img.storage_path}</p>
+                <p className="mt-3 text-xs text-ivory/50">
                   {img.is_published ? "Published" : "Hidden"} · sort {img.sort_order}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
@@ -186,7 +186,7 @@ function UploadModal({
         className="space-y-5"
       >
         <label className="block">
-          <span className="mb-2 block text-xs uppercase tracking-[0.18em] text-cream/70">
+          <span className="mb-2 block text-xs uppercase tracking-[0.18em] text-ivory/70">
             Image file
           </span>
           <input
@@ -194,7 +194,7 @@ function UploadModal({
             accept="image/jpeg,image/png,image/webp,image/avif"
             required
             onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-            className="w-full rounded-lg border border-cream/15 bg-night-2/70 px-4 py-3 text-cream/80 file:mr-4 file:rounded-full file:border-0 file:bg-gold file:px-4 file:py-1.5 file:text-night"
+            className="w-full rounded-lg border border-ivory/15 bg-forest-2/70 px-4 py-3 text-ivory/80 file:mr-4 file:rounded-full file:border-0 file:bg-brass file:px-4 file:py-1.5 file:text-forest"
           />
         </label>
         <Input
@@ -211,7 +211,7 @@ function UploadModal({
           onChange={(e) => setAlt(e.target.value)}
           placeholder="Describe the photo for screen readers"
         />
-        <label className="flex items-center gap-3 text-sm text-cream/75">
+        <label className="flex items-center gap-3 text-sm text-ivory/75">
           <input
             type="checkbox"
             checked={published}

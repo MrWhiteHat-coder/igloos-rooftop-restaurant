@@ -1,108 +1,148 @@
 import { Badge, SectionHeading } from "../components/ui/misc";
 import { ButtonLink } from "../components/ui/Button";
-import { Cake, HeartHandshake, PartyPopper, Briefcase } from "lucide-react";
 
-const OCCASION_CARDS = [
+const OCCASIONS = [
   {
-    icon: Cake,
+    no: "01",
     title: "Birthdays",
-    text: "Cake arrangement, candle service, a sparkler walk (where permitted) and dessert-led plating for the guest of honour.",
+    text: "Cake timed to the last course, candles lit without prompting, and a table that never feels hurried. For the guest of honour, a small plated surprise from the kitchen.",
   },
   {
-    icon: HeartHandshake,
+    no: "02",
     title: "Anniversaries",
-    text: "Flower dressing in an igloo for two, bottled greetings on the table and a commitment-aware service choreography.",
+    text: "An igloo for two, flowers at dusk, and service that disappears at exactly the right moments. Bring the year you met — we'll keep the rest between us.",
   },
   {
-    icon: PartyPopper,
-    title: "Celebrations & reunions",
-    text: "Composed set menus for gatherings of 10–40, with igloo combos, notes on terrace flow and bespoke desserts.",
+    no: "03",
+    title: "Gatherings & reunions",
+    text: "Long terrace tables under the lights for groups of ten to forty, with set menus composed for sharing the way celebrations actually happen.",
   },
   {
-    icon: Briefcase,
-    title: "Business meals",
-    text: "Quiet igloos for dinner meetings, dedicated service pace, and billing arrangements arranged in advance.",
+    no: "04",
+    title: "Business dinners",
+    text: "Quiet igloos for the conversations that matter, a service pace calibrated to the meeting rather than the clock, and billing arranged discreetly in advance.",
   },
-] as const;
+];
 
 export default function Celebrations() {
   return (
-    <div className="mx-auto max-w-7xl px-5 pb-24 pt-40 sm:px-8">
-      <SectionHeading
-        eyebrow="Celebrations"
-        title="We do not do 'just a table' for these evenings."
-        subtitle="Tell us it's a birthday, an anniversary or a proposal, and the team plans the igloo, the candles, the cake and the course of the evening around it."
-      />
+    <div className="pt-16">
+      {/* Header */}
+      <section className="relative overflow-hidden">
+        <img
+          src="/images/photography/celebration.jpg"
+          alt="Hands reaching across a table mid-celebration — representative editorial photograph"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to top, #10231e 4%, rgba(16,35,30,0.82) 40%, rgba(16,35,30,0.3) 100%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-7xl px-5 pb-28 pt-56 sm:px-8">
+          <p className="eyebrow mb-6 flex items-center gap-4 text-brass">
+            <span className="h-px w-12 bg-brass/70" aria-hidden="true" />
+            Celebrations
+          </p>
+          <h1 className="max-w-3xl font-display text-[3rem] font-light leading-[1.02] text-ivory sm:text-[4.6rem]">
+            The evenings that become
+            <em className="block italic text-brass-2">a story retold.</em>
+          </h1>
+          <p className="mt-7 max-w-xl text-[1rem] font-light leading-[1.9] text-ivory/70">
+            Birthdays, anniversaries, proposals and family reunions — tell us the occasion once
+            and the kitchen, the flowers and the timing are arranged around it.
+          </p>
+        </div>
+      </section>
 
-      <div
-        className="mx-auto mt-12 flex max-w-2xl flex-wrap items-center justify-center gap-3 text-center"
-        role="note"
-      >
-        <Badge>Placeholder celebration package details</Badge>
-        <p className="w-full text-xs leading-relaxed text-cream/50">
-          Package inclusions, prices and decor options shown are configurable placeholders. The
-          restaurant confirms actual arrangements after your enquiry.
-        </p>
-      </div>
+      {/* Occasion list — editorial numbering */}
+      <section className="bg-forest px-5 py-24 sm:px-8 sm:py-32">
+        <div className="mx-auto max-w-6xl">
+          <div className="space-y-0">
+            {OCCASIONS.map((o) => (
+              <article
+                key={o.no}
+                className="group grid gap-6 border-b border-ivory/10 py-10 first:border-t sm:grid-cols-[80px_1fr] sm:gap-10"
+              >
+                <span className="font-display text-3xl font-light text-brass/70 transition-colors group-hover:text-brass">
+                  {o.no}
+                </span>
+                <div>
+                  <h2 className="font-display text-3xl font-light text-ivory sm:text-4xl">
+                    {o.title}
+                  </h2>
+                  <p className="mt-4 max-w-2xl text-[0.95rem] font-light leading-[1.9] text-ivory/60">
+                    {o.text}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
 
-      <div className="mt-16 grid gap-6 sm:grid-cols-2">
-        {OCCASION_CARDS.map(({ icon: Icon, title, text }) => (
-          <article
-            key={title}
-            className="group relative overflow-hidden rounded-3xl border border-slate-line bg-night-2/70 p-8 transition-all duration-500 hover:-translate-y-1 hover:border-gold/50 hover:shadow-card"
-          >
-            <div
-              aria-hidden="true"
-              className="absolute -left-16 -top-16 h-40 w-40 rounded-full bg-gold/10 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-            />
-            <Icon className="h-8 w-8 text-gold" aria-hidden="true" />
-            <h3 className="mt-6 font-display text-2xl text-cream">{title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-cream/60">{text}</p>
-          </article>
-        ))}
-      </div>
+          <div className="mt-14">
+            <Badge tone="neutral">Package inclusions, prices and decor options await confirmation by the business</Badge>
+          </div>
+        </div>
+      </section>
 
       {/* Enquiry flow */}
-      <section className="mt-20 rounded-3xl border border-gold/30 bg-night-2/60 p-8 sm:p-12">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+      <section className="bg-ivory text-espresso">
+        <div className="mx-auto grid max-w-7xl gap-16 px-5 py-24 sm:px-8 lg:grid-cols-2">
           <div>
-            <h2 className="font-display text-3xl text-cream sm:text-4xl">
-              How a celebration booking flows
-            </h2>
-            <ol className="mt-8 space-y-6">
+            <SectionHeading
+              tone="light"
+              align="left"
+              eyebrow="How it works"
+              title="Three steps to the evening."
+            />
+            <ol className="mt-12 space-y-9">
               {[
                 {
-                  h: "1 · Enquiry",
-                  t: "Submit the reservation form with your date, party size, occasion and “Private igloo (glass dome)” or terrace preference.",
+                  h: "Send the enquiry",
+                  t: "Pick the date, party size and occasion on the reservation form. Choose “Private igloo” if the dome is the point.",
                 },
                 {
-                  h: "2 · Confirmation call",
-                  t: "Our desk confirms igloo availability and celebration options by phone or WhatsApp. Not a confirmation until we speak.",
+                  h: "We call to compose it",
+                  t: "Our desk confirms igloo availability and celebration options by phone or WhatsApp. Nothing is final until we have spoken.",
                 },
                 {
-                  h: "3 · The evening",
-                  t: "Arrive to your dressed igloo or terrace table — candles, flowers, cake service arranged with your host.",
+                  h: "Arrive to your evening",
+                  t: "Your dressed igloo or terrace table — candles, flowers, cake service orchestrated with your host.",
                 },
-              ].map((s) => (
-                <li key={s.h} className="border-l-2 border-gold/40 pl-5">
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-gold">{s.h}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-cream/65">{s.t}</p>
+              ].map((s, i) => (
+                <li key={s.h} className="grid grid-cols-[64px_1fr] gap-6 border-b border-espresso/15 pb-8">
+                  <span className="font-display text-3xl font-light text-brass-3">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h3 className="font-display text-2xl font-medium">{s.h}</h3>
+                    <p className="mt-2 text-[0.92rem] font-light leading-[1.85] text-espresso/70">{s.t}</p>
+                  </div>
                 </li>
               ))}
             </ol>
           </div>
-          <div className="rounded-2xl border border-slate-line bg-night p-8">
-            <h3 className="font-display text-2xl text-gold">Good to know</h3>
-            <ul className="mt-6 space-y-3 text-sm leading-relaxed text-cream/65">
-              <li>· Advance notice of 24–48 helps us source cake and decor properly.</li>
-              <li>· Guest counts above 40 are arranged on the open-air terrace.</li>
-              <li>· Any venue policies, minimum spends or decor fees will be told to you before confirming.</li>
-              <li>· All arrangements are subject to final availability at confirmation time.</li>
+          <aside className="self-center border border-espresso/15 bg-ivory-2 p-10">
+            <h3 className="font-display text-3xl font-light">Good to know</h3>
+            <ul className="mt-7 space-y-4 text-[0.9rem] font-light leading-relaxed text-espresso/70">
+              <li>· 24–48 hours notice helps us source cake and decor properly</li>
+              <li>· Parties above 40 guests are arranged on the open terrace</li>
+              <li>· Venue policies, minimum spends or decor fees are confirmed before booking</li>
+              <li>· Arrangements are always subject to final availability</li>
             </ul>
-            <div className="mt-8">
-              <ButtonLink to="/reservations">Start the enquiry</ButtonLink>
+            <p className="mt-8 text-xs font-light text-espresso/50">
+              Package details shown are awaiting confirmation — the team confirms actual
+              arrangements with your enquiry.
+            </p>
+            <div className="mt-9">
+              <ButtonLink to="/reservations" variant="espresso">
+                Start the enquiry
+              </ButtonLink>
             </div>
-          </div>
+          </aside>
         </div>
       </section>
     </div>

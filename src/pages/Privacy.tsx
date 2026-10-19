@@ -1,14 +1,12 @@
+import LegalShell from "../components/LegalShell";
+
 export default function Privacy() {
   return (
-    <article className="mx-auto max-w-3xl px-5 pb-24 pt-40 sm:px-8 [&_h2]:font-display [&_h2]:text-3xl [&_h2]:text-gold [&_p]:mt-4 [&_p]:text-sm [&_p]:leading-relaxed [&_p]:text-cream/70 [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5 [&_li]:text-sm [&_li]:text-cream/70 [&_section]:mt-12">
-      <header>
-        <p className="mb-3 text-xs font-medium uppercase tracking-[0.32em] text-gold">Legal</p>
-        <h1 className="font-display text-4xl text-cream sm:text-5xl">Privacy policy</h1>
-        <p className="mt-4 text-xs text-cream/40">
-          Last updated: October 2026 · Terms may change; the live version is always this page.
-        </p>
-      </header>
-
+    <LegalShell
+      eyebrow="Legal"
+      title="Privacy policy"
+      updated="Last updated: October 2026 · The live version is always this page."
+    >
       <section>
         <h2>1. What we collect</h2>
         <p>
@@ -41,17 +39,16 @@ export default function Privacy() {
         <h2>4. WhatsApp contact</h2>
         <p>
           The website can open a prefilled WhatsApp message with your enquiry and booking
-          reference. Sending that message delivers your details to the restaurant over WhatsApp,
-          operated by a third party under its own terms. Opening the link does not confirm the
-          booking — only authorised staff confirm a reservation.
+          reference. That is a convenience for reaching the desk; sending the message does not
+          confirm a booking — only authorised staff do that.
         </p>
       </section>
 
       <section>
         <h2>5. Retention</h2>
         <p>
-          We keep reservation records only as long as needed for service history, coordination and
-          applicable legal record-keeping, after which they are deleted or anonymised.
+          We keep reservation records only as long as needed for service history, coordination
+          and applicable legal record-keeping, after which they are deleted or anonymised.
         </p>
       </section>
 
@@ -64,13 +61,13 @@ export default function Privacy() {
       </section>
 
       <section>
-        <h2 className="font-display text-3xl text-gold">7. Questions</h2>
+        <h2>7. Questions</h2>
         <p>
           Privacy questions are handled by the restaurant's front-of-house management, reachable
           through the Contact page. Contact details shown are placeholder data until confirmed by
           the business.
         </p>
       </section>
-    </article>
+    </LegalShell>
   );
 }

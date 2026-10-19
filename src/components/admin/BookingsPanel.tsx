@@ -117,9 +117,9 @@ export default function BookingsPanel() {
           { label: "Upcoming guests (confirmed)", value: stats?.totalGuestsUpcoming },
           { label: "Total booking records", value: stats?.totalBookings },
         ].map((s) => (
-          <div key={s.label} className="rounded-2xl border border-slate-line bg-night-2/70 p-6">
-            <p className="text-xs uppercase tracking-[0.2em] text-cream/50">{s.label}</p>
-            <p className="mt-3 font-display text-4xl text-gold">
+          <div key={s.label} className="border border-ivory/15 bg-forest-2/70 p-6">
+            <p className="text-xs uppercase tracking-[0.2em] text-ivory/50">{s.label}</p>
+            <p className="mt-3 font-display text-4xl text-brass">
               {loading || stats === null ? "—" : s.value ?? 0}
             </p>
           </div>
@@ -167,9 +167,9 @@ export default function BookingsPanel() {
       )}
 
       {/* Table */}
-      <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-line">
+      <div className="mt-6 overflow-x-auto border border-ivory/15">
         <table className="w-full min-w-[860px] text-left text-sm">
-          <thead className="bg-night-2/80 text-[0.7rem] uppercase tracking-[0.16em] text-cream/50">
+          <thead className="bg-forest-2/80 text-[0.7rem] uppercase tracking-[0.16em] text-ivory/50">
             <tr>
               <th className="px-4 py-3">Reference</th>
               <th className="px-4 py-3">When</th>
@@ -180,7 +180,7 @@ export default function BookingsPanel() {
               <th className="px-4 py-3">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-line">
+          <tbody className="divide-y divide-ivory/15">
             {loading && (
               <tr>
                 <td colSpan={7}>
@@ -197,35 +197,35 @@ export default function BookingsPanel() {
             )}
             {!loading &&
               (rows ?? []).map((b) => (
-                <tr key={b.id} className="align-top hover:bg-night-2/40">
+                <tr key={b.id} className="align-top hover:bg-forest-2/40">
                   <td className="px-4 py-4">
                     <button
-                      className="font-mono text-xs text-gold hover:underline"
+                      className="font-mono text-xs text-brass hover:underline"
                       onClick={async () => {
                         setHistory({ booking: b, events: await fetchBookingEvents(b.id) });
                       }}
                     >
                       {b.booking_reference}
                     </button>
-                    <p className="mt-1 text-xs text-cream/40">
+                    <p className="mt-1 text-xs text-ivory/40">
                       Created {new Date(b.created_at).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })}
                     </p>
                   </td>
-                  <td className="px-4 py-4 text-cream/75">
+                  <td className="px-4 py-4 text-ivory/75">
                     {new Date(`${b.booking_date}T00:00:00`).toLocaleDateString("en-IN", { dateStyle: "medium" })}
-                    <p className="text-xs text-cream/45">{b.booking_time.slice(0, 5)}</p>
+                    <p className="text-xs text-ivory/45">{b.booking_time.slice(0, 5)}</p>
                   </td>
                   <td className="px-4 py-4">
-                    <p className="text-cream/85">{b.customer_name}</p>
-                    <p className="text-xs text-cream/50">{b.customer_phone}</p>
-                    {b.customer_email && <p className="text-xs text-cream/40">{b.customer_email}</p>}
+                    <p className="text-ivory/85">{b.customer_name}</p>
+                    <p className="text-xs text-ivory/50">{b.customer_phone}</p>
+                    {b.customer_email && <p className="text-xs text-ivory/40">{b.customer_email}</p>}
                   </td>
-                  <td className="px-4 py-4 text-cream/75">{b.guest_count} guests</td>
-                  <td className="px-4 py-4 text-cream/70">
+                  <td className="px-4 py-4 text-ivory/75">{b.guest_count} guests</td>
+                  <td className="px-4 py-4 text-ivory/70">
                     {b.occasion.replace(/_/g, " ")}
-                    <p className="text-xs text-cream/45">{b.dining_preference}</p>
+                    <p className="text-xs text-ivory/45">{b.dining_preference}</p>
                     {b.special_requests && (
-                      <p className="mt-1 max-w-xs text-xs italic text-cream/40">“{b.special_requests}”</p>
+                      <p className="mt-1 max-w-xs text-xs italic text-ivory/40">“{b.special_requests}”</p>
                     )}
                   </td>
                   <td className="px-4 py-4">
@@ -236,8 +236,8 @@ export default function BookingsPanel() {
                           : STATUS_TONE[b.status] === "red"
                             ? "border-red-500/40 bg-red-500/10 text-red-300"
                             : STATUS_TONE[b.status] === "gold"
-                              ? "border-gold/40 bg-gold/10 text-gold-bright"
-                              : "border-cream/20 bg-cream/5 text-cream/70"
+                              ? "border-brass/40 bg-brass/10 text-brass-2"
+                              : "border-ivory/20 bg-ivory/5 text-ivory/70"
                       }`}
                     >
                       {b.status.replace(/_/g, " ")}
@@ -258,7 +258,7 @@ export default function BookingsPanel() {
                           </Button>
                         ))}
                       {(NEXT_ACTIONS[b.status] ?? []).length === 0 && (
-                        <span className="text-xs text-cream/40">Final state</span>
+                        <span className="text-xs text-ivory/40">Final state</span>
                       )}
                     </div>
                   </td>
@@ -269,7 +269,7 @@ export default function BookingsPanel() {
       </div>
 
       {/* Pagination */}
-      <div className="mt-6 flex items-center justify-between text-sm text-cream/60">
+      <div className="mt-6 flex items-center justify-between text-sm text-ivory/60">
         <p>
           {count} record{count === 1 ? "" : "s"} · page {filters.page} of {pages}
         </p>
@@ -303,31 +303,31 @@ export default function BookingsPanel() {
           <>
             <dl className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <dt className="text-xs uppercase tracking-wider text-cream/45">Guest</dt>
-                <dd className="text-cream/85">{history.booking.customer_name}</dd>
+                <dt className="text-xs uppercase tracking-wider text-ivory/45">Guest</dt>
+                <dd className="text-ivory/85">{history.booking.customer_name}</dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-wider text-cream/45">Phone</dt>
-                <dd className="text-cream/85">{history.booking.customer_phone}</dd>
+                <dt className="text-xs uppercase tracking-wider text-ivory/45">Phone</dt>
+                <dd className="text-ivory/85">{history.booking.customer_phone}</dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-wider text-cream/45">When</dt>
-                <dd className="text-cream/85">
+                <dt className="text-xs uppercase tracking-wider text-ivory/45">When</dt>
+                <dd className="text-ivory/85">
                   {history.booking.booking_date} · {history.booking.booking_time.slice(0, 5)}
                 </dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-wider text-cream/45">Status</dt>
-                <dd className="text-cream/85">{history.booking.status}</dd>
+                <dt className="text-xs uppercase tracking-wider text-ivory/45">Status</dt>
+                <dd className="text-ivory/85">{history.booking.status}</dd>
               </div>
             </dl>
             <div className="mt-6">
-              <h3 className="text-xs uppercase tracking-[0.2em] text-cream/50">Event trail</h3>
+              <h3 className="text-xs uppercase tracking-[0.2em] text-ivory/50">Event trail</h3>
               <ol className="mt-3 space-y-3">
                 {history.events.map((ev) => (
-                  <li key={ev.id} className="border-l-2 border-gold/40 pl-4 text-sm">
-                    <p className="text-cream/80">{ev.event_type}</p>
-                    <p className="text-xs text-cream/40">
+                  <li key={ev.id} className="border-l-2 border-brass/40 pl-4 text-sm">
+                    <p className="text-ivory/80">{ev.event_type}</p>
+                    <p className="text-xs text-ivory/40">
                       {new Date(ev.created_at).toLocaleString("en-IN", {
                         dateStyle: "medium",
                         timeStyle: "short",

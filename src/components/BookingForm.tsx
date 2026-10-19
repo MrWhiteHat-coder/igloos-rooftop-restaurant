@@ -98,39 +98,40 @@ export default function BookingForm() {
     );
     return (
       <div
-        className="animate-[fade-up_.5s_ease-out] rounded-3xl border border-gold/40 bg-night-2 p-8 text-center sm:p-12"
+        className="animate-[fade-up_.5s_ease-out] border border-brass/35 bg-forest-2 p-8 text-center sm:p-14"
         role="status"
         aria-live="polite"
       >
-        <h2 className="font-display text-3xl text-gold sm:text-4xl">Enquiry received</h2>
-        <p className="mt-4 text-cream/80">
-          Thank you, {form.customer_name.split(" ")[0]}. Our reservations desk will review your
-          request and call you on <span className="text-cream">{form.customer_phone}</span>.
+        <p className="rule-note center mb-6 justify-center text-brass">
+          <span className="eyebrow">Enquiry received</span>
         </p>
-        <div className="mx-auto mt-8 max-w-sm rounded-2xl border border-slate-line bg-night p-6">
-          <p className="text-xs uppercase tracking-[0.24em] text-cream/50">Booking reference</p>
-          <p className="mt-2 font-display text-3xl tracking-wider text-gold">
+        <h2 className="font-display text-4xl font-light text-ivory sm:text-5xl">
+          Consider it <em className="italic text-brass-2">begun.</em>
+        </h2>
+        <p className="mx-auto mt-5 max-w-md text-[0.95rem] font-light leading-relaxed text-ivory/70">
+          Thank you, {form.customer_name.split(" ")[0]}. Our reservations desk will review your
+          request and call you on <span className="text-ivory">{form.customer_phone}</span>.
+        </p>
+        <div className="mx-auto mt-9 max-w-sm border border-ivory/15 bg-forest p-7">
+          <p className="text-[0.6rem] font-medium uppercase tracking-[0.28em] text-ivory/45">Booking reference</p>
+          <p className="mt-3 font-display text-4xl font-light tracking-[0.12em] text-brass-2">
             {result.booking_reference}
           </p>
-          <p className="mt-4 text-sm text-cream/60">
-            Status: <span className="font-semibold text-gold">Pending</span> — not yet confirmed.
+          <p className="mt-4 text-[0.8rem] font-light text-ivory/55">
+            Status: <span className="uppercase tracking-[0.18em] text-brass">Pending</span> — not yet confirmed.
           </p>
         </div>
-        <p className="mx-auto mt-6 max-w-md text-xs leading-relaxed text-cream/50">
-          Keep your reference for all communication. Opening the WhatsApp link below simply lets
-          you send your enquiry to the restaurant over WhatsApp — it does not confirm the
-          reservation, and restaurant staff must confirm your booking before it is final.
+        <p className="mx-auto mt-7 max-w-md text-[0.72rem] font-light leading-relaxed text-ivory/40">
+          Keep your reference for all communication. The WhatsApp link below simply opens a
+          pre-typed message to the restaurant — sending it does not confirm the reservation;
+          only our team can do that.
         </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <ButtonAnchor
-            href={wa}
-            variant="gold"
-            aria-label="Send booking enquiry on WhatsApp"
-          >
+        <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+          <ButtonAnchor href={wa} variant="gold" aria-label="Send booking enquiry on WhatsApp">
             Send via WhatsApp
           </ButtonAnchor>
           <button
-            className="text-sm text-cream/60 underline-offset-4 transition-colors hover:text-gold hover:underline"
+            className="border-b border-transparent px-1 pb-0.5 text-[0.75rem] uppercase tracking-[0.18em] text-ivory/55 transition-colors hover:border-brass hover:text-brass"
             onClick={() => {
               setResult(null);
               setForm(initialForm);
@@ -149,14 +150,17 @@ export default function BookingForm() {
       onSubmit={onSubmit}
       noValidate
       key={formKey}
-      className="rounded-3xl border border-slate-line bg-night-2/60 p-6 sm:p-10"
+      className="border border-ivory/12 bg-forest-2/60 p-7 sm:p-12"
     >
-      <h2 className="font-display text-3xl text-cream">Request your evening</h2>
-      <p className="mt-2 text-sm text-cream/60">
-        Send an enquiry — reservation is confirmed only after our desk calls or messages you.
+      <p className="rule-note mb-6">
+        <span className="eyebrow">Reservation enquiry</span>
+      </p>
+      <h2 className="font-display text-4xl font-light text-ivory">Your evening, in five lines.</h2>
+      <p className="mt-3 text-[0.92rem] font-light text-ivory/60">
+        Confirmed only after our desk calls or messages you.
       </p>
 
-      <div className="mt-8 grid gap-6 sm:grid-cols-2">
+      <div className="mt-10 grid gap-x-8 gap-y-7 sm:grid-cols-2">
         <Input
           label="Full name"
           required
@@ -248,7 +252,7 @@ export default function BookingForm() {
             label="Special requests"
             optional
             maxLength={500}
-            placeholder="Allergies, cake arrangement, flower decor, seating wishes…"
+            placeholder="Allergies, cake timing, flower styling, seating wishes…"
             value={form.special_requests}
             onChange={update("special_requests")}
             error={errors.special_requests}
@@ -256,18 +260,19 @@ export default function BookingForm() {
         </div>
       </div>
 
-      <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+      <div className="mt-10 flex flex-wrap items-center justify-between gap-6">
         <Button type="submit" loading={submitting} size="lg">
           Send enquiry
         </Button>
-        <p className="max-w-sm text-xs leading-relaxed text-cream/50">
-          By submitting, you agree to our <a className="text-gold underline-offset-4 hover:underline" href="/terms">booking terms</a> and{" "}
-          <a className="text-gold underline-offset-4 hover:underline" href="/privacy">privacy policy</a>.
+        <p className="max-w-sm text-[0.72rem] font-light leading-relaxed text-ivory/45">
+          By submitting, you accept our{" "}
+          <a className="text-brass hover:border-b hover:border-brass" href="/terms">booking terms</a> and{" "}
+          <a className="text-brass hover:border-b hover:border-brass" href="/privacy">privacy policy</a>.
         </p>
       </div>
 
       {serverError && (
-        <p role="alert" className="mt-6 rounded-xl border border-red-400/50 bg-red-500/10 px-5 py-4 text-sm text-red-200">
+        <p role="alert" className="mt-6 border border-red-300/40 bg-red-400/10 px-5 py-4 text-sm font-light text-red-200">
           {serverError}
         </p>
       )}

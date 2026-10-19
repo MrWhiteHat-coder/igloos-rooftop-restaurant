@@ -1,66 +1,102 @@
 import BookingForm from "../components/BookingForm";
 import { SITE } from "../lib/config";
-import { Clock, PhoneCall, ShieldCheck } from "lucide-react";
 
-const ASSURANCES = [
+const STEPS = [
   {
-    icon: Clock,
-    title: "Response within a few hours",
-    text: "Our reservations desk reviews enquiries during service hours (placeholder schedule).",
+    no: "01",
+    t: "Send the enquiry — it reaches our reservations desk as a pending request.",
   },
   {
-    icon: PhoneCall,
-    title: "Confirmation happens by call or WhatsApp",
-    text: "A submitted enquiry stays Pending until an authorised team member confirms it.",
+    no: "02",
+    t: "We confirm availability by call or WhatsApp. Enquiries are never auto-confirmed.",
   },
   {
-    icon: ShieldCheck,
-    title: "Your details stay with the restaurant",
-    text: "Booking data is stored privately and used only for this reservation.",
+    no: "03",
+    t: "Arrive to your igloo or terrace table, everything composed in advance.",
   },
-] as const;
+];
 
 export default function Reservations() {
   return (
-    <div className="mx-auto max-w-7xl px-5 pb-24 pt-40 sm:px-8">
-      <div className="mx-auto max-w-3xl text-center">
-        <p className="mb-3 text-xs font-medium uppercase tracking-[0.32em] text-gold">
-          Reservations
-        </p>
-        <h1 className="font-display text-4xl text-cream sm:text-6xl">
-          The table, the igloo, the evening.
-        </h1>
-        <p className="mt-5 text-cream/70">
-          Send an enquiry below. We will confirm availability for your date and party before the
-          reservation is final — an enquiry is never an automatic booking.
-        </p>
-      </div>
+    <div className="pt-16">
+      {/* Atmospheric header */}
+      <section className="relative overflow-hidden">
+        <img
+          src="/images/photography/service.jpg"
+          alt="A curated table set for service — representative editorial photograph"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to top, #10231e 6%, rgba(16,35,30,0.85) 45%, rgba(16,35,30,0.35) 100%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-7xl px-5 pb-24 pt-52 sm:px-8">
+          <p className="eyebrow mb-6 flex items-center gap-4 text-brass">
+            <span className="h-px w-12 bg-brass/70" aria-hidden="true" />
+            Reservations
+          </p>
+          <h1 className="max-w-3xl font-display text-[3rem] font-light leading-[1.02] text-ivory sm:text-[4.6rem]">
+            The table, the igloo,
+            <em className="block italic text-brass-2">the evening itself.</em>
+          </h1>
+          <p className="mt-7 max-w-xl text-[1rem] font-light leading-[1.9] text-ivory/70">
+            One short form. A confirmation call. Then nothing to think about but the company.
+          </p>
+        </div>
+      </section>
 
-      <div className="mx-auto mt-14 grid max-w-6xl gap-10 lg:grid-cols-[1.6fr_1fr]">
+      <div className="mx-auto grid max-w-7xl gap-16 bg-forest px-5 py-24 sm:px-8 lg:grid-cols-[1.55fr_1fr]">
         <BookingForm />
-        <aside className="space-y-6">
-          <div className="rounded-3xl border border-slate-line bg-night-2/70 p-8">
-            <h2 className="font-display text-2xl text-gold">What happens next</h2>
-            <ul className="mt-6 space-y-5">
-              {ASSURANCES.map(({ icon: Icon, title, text }) => (
-                <li key={title} className="flex items-start gap-4">
-                  <Icon size={20} className="mt-1 shrink-0 text-gold" aria-hidden="true" />
-                  <div>
-                    <p className="text-sm font-medium text-cream">{title}</p>
-                    <p className="mt-1 text-sm leading-relaxed text-cream/55">{text}</p>
-                  </div>
+
+        <aside className="space-y-12">
+          {/* Process */}
+          <div>
+            <p className="rule-note mb-8">
+              <span className="eyebrow">What happens next</span>
+            </p>
+            <ol className="space-y-8">
+              {STEPS.map((s) => (
+                <li key={s.no} className="grid grid-cols-[56px_1fr] gap-5 border-b border-ivory/10 pb-7">
+                  <span className="font-display text-2xl font-light text-brass">{s.no}</span>
+                  <p className="text-[0.92rem] font-light leading-[1.8] text-ivory/65">{s.t}</p>
                 </li>
               ))}
-            </ul>
+            </ol>
           </div>
-          <div className="rounded-3xl border border-slate-line bg-night-2/70 p-8 text-sm text-cream/70">
-            <h2 className="font-display text-2xl text-cream">Reach us directly</h2>
-            <p className="mt-4">Phone · {SITE.phone}</p>
-            <p className="mt-2">WhatsApp · {SITE.phone}</p>
-            <p className="mt-2">Email · {SITE.email}</p>
-            <p className="mt-2 whitespace-pre-line">{SITE.hours}</p>
-            <p className="mt-4 text-xs text-cream/40">
-              Contact details shown are unverified placeholders until confirmed by the business.
+
+          {/* Reach the desk */}
+          <div>
+            <p className="rule-note mb-8">
+              <span className="eyebrow">Reach the desk directly</span>
+            </p>
+            <dl className="space-y-5 text-[0.92rem] font-light text-ivory/70">
+              <div>
+                <dt className="text-[0.6rem] font-medium uppercase tracking-[0.26em] text-ivory/40">Phone</dt>
+                <dd className="mt-1">
+                  <a href={`tel:+${SITE.whatsappNumber}`} className="transition-colors hover:text-brass">
+                    {SITE.phone}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="text-[0.6rem] font-medium uppercase tracking-[0.26em] text-ivory/40">Email</dt>
+                <dd className="mt-1">
+                  <a href={`mailto:${SITE.email}`} className="transition-colors hover:text-brass">
+                    {SITE.email}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="text-[0.6rem] font-medium uppercase tracking-[0.26em] text-ivory/40">Hours</dt>
+                <dd className="mt-1 whitespace-pre-line leading-relaxed">{SITE.hours}</dd>
+              </div>
+            </dl>
+            <p className="mt-6 text-[0.68rem] font-light leading-relaxed text-ivory/35">
+              Contact details are unverified placeholders pending confirmation by the business.
             </p>
           </div>
         </aside>

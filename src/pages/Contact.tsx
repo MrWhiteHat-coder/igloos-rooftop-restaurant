@@ -1,73 +1,98 @@
 import { SectionHeading } from "../components/ui/misc";
-import { ButtonAnchor } from "../components/ui/Button";
+import { ButtonLink, ButtonAnchor } from "../components/ui/Button";
 import { SITE, mapsDirectionsUrl } from "../lib/config";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 export default function Contact() {
   const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(SITE.mapQuery)}&output=embed`;
 
   return (
-    <div className="mx-auto max-w-7xl px-5 pb-24 pt-40 sm:px-8">
-      <SectionHeading
-        eyebrow="Contact & directions"
-        title="Above the city, easy to find"
-        subtitle="Directions, service hours and every way to reach the reservations desk."
-      />
-
-      <div className="mt-16 grid gap-8 lg:grid-cols-2">
-        <div className="overflow-hidden rounded-3xl border border-slate-line">
-          <iframe
-            title="Map showing the restaurant location"
-            src={mapSrc}
-            className="h-[380px] w-full grayscale-[35%] contrast-110"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
+    <div className="pt-24">
+      <section className="bg-ivory text-espresso">
+        <div className="mx-auto max-w-7xl px-5 pb-20 pt-24 sm:px-8 sm:pt-28">
+          <SectionHeading
+            tone="light"
+            align="left"
+            eyebrow="Contact & directions"
+            title="Above the city, easy to find."
           />
         </div>
+      </section>
 
-        <div className="space-y-6">
-          <div className="rounded-3xl border border-slate-line bg-night-2/70 p-8">
-            <div className="flex items-start gap-4">
-              <MapPin className="mt-1 h-6 w-6 shrink-0 text-gold" aria-hidden="true" />
-              <div>
-                <h2 className="font-display text-2xl text-cream">Address</h2>
-                <p className="mt-3 text-sm leading-relaxed text-cream/65">{SITE.addressLine}</p>
-                <div className="mt-5">
-                  <ButtonAnchor href={mapsDirectionsUrl(SITE.mapQuery)} variant="outline" size="sm">
-                    Get directions
-                  </ButtonAnchor>
-                </div>
-              </div>
+      <section className="bg-ivory-2 pb-28 text-espresso">
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-12">
+          {/* Map */}
+          <div className="lg:col-span-7">
+            <div className="border border-espresso/15">
+              <iframe
+                title="Map showing the restaurant location"
+                src={mapSrc}
+                className="h-[380px] w-full grayscale-[35%] contrast-110 lg:h-[460px]"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+            <div className="mt-6 flex flex-wrap items-center gap-5">
+              <ButtonAnchor
+                variant="espresso"
+                size="sm"
+                href={mapsDirectionsUrl(SITE.mapQuery)}
+              >
+                Open directions
+              </ButtonAnchor>
+              <span className="text-[0.72rem] font-light text-espresso/50">
+                The pin is a placeholder locality until the business confirms the exact address.
+              </span>
             </div>
           </div>
 
-          <div className="rounded-3xl border border-slate-line bg-night-2/70 p-8">
-            <h2 className="font-display text-2xl text-cream">Reach the desk</h2>
-            <ul className="mt-5 space-y-4 text-sm text-cream/70">
-              <li className="flex items-center gap-4">
-                <Phone size={18} className="text-gold" aria-hidden="true" />
-                <span>
-                  Reservations · <a className="hover:text-gold" href={`tel:+${SITE.whatsappNumber}`}>{SITE.phone}</a>
-                </span>
-              </li>
-              <li className="flex items-center gap-4">
-                <Mail size={18} className="text-gold" aria-hidden="true" />
-                <span>
-                  <a className="hover:text-gold" href={`mailto:${SITE.email}`}>{SITE.email}</a>
-                </span>
-              </li>
-              <li className="flex items-center gap-4">
-                <Clock size={18} className="text-gold" aria-hidden="true" />
-                <span>{SITE.hours}</span>
-              </li>
-            </ul>
-            <p className="mt-6 text-xs text-cream/40">
-              Phone number, email and hours are placeholder data until the business confirms them.
+          {/* Channels */}
+          <div className="lg:col-span-5">
+            <address className="not-italic border-b border-espresso/15 pb-8">
+              <p className="eyebrow text-brass-3">Address</p>
+              <p className="mt-4 whitespace-pre-line font-display text-[1.55rem] font-light leading-snug">
+                {SITE.addressLine}
+              </p>
+            </address>
+
+            <dl className="mt-8 space-y-7">
+              <div className="border-b border-espresso/15 pb-7">
+                <dt className="eyebrow text-brass-3">Reservations desk</dt>
+                <dd className="mt-3 space-y-1 text-[0.95rem] font-light">
+                  <p>
+                    <a className="hover:text-brass-3" href={`tel:+${SITE.whatsappNumber}`}>
+                      {SITE.phone}
+                    </a>
+                  </p>
+                  <p>
+                    <a className="hover:text-brass-3" href={`mailto:${SITE.email}`}>
+                      {SITE.email}
+                    </a>
+                  </p>
+                  <p className="whitespace-pre-line leading-relaxed text-espresso/70">{SITE.hours}</p>
+                </dd>
+              </div>
+              <div className="border-b border-espresso/15 pb-7">
+                <dt className="eyebrow text-brass-3">Private igloo evenings</dt>
+                <dd className="mt-3 text-[0.95rem] font-light leading-relaxed text-espresso/70">
+                  Two to ten guests per dome. Larger parties are composed on the open terrace.
+                  Celebration arrangements are confirmed at booking.
+                </dd>
+              </div>
+            </dl>
+
+            <p className="mt-7 text-[0.68rem] font-light text-espresso/45">
+              Phone, email and hours shown are placeholders pending confirmation by the business.
             </p>
+
+            <div className="mt-10">
+              <ButtonLink to="/reservations" variant="espresso">
+                Reserve online instead
+              </ButtonLink>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
